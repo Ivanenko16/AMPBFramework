@@ -2,6 +2,7 @@ package desktop.pages;
 
 import abstractclasses.page.AbstractPage;
 import desktop.fragments.NavigationBar;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -33,7 +34,7 @@ public class BookDepositoryLoginPage extends AbstractPage {
 
     public NavigationBar getNavigationBar() {
         new WebDriverWait(driver,10)
-                .until(ExpectedConditions.visibilityOf(NavigationBar.getNavigationBarElement()));
+                .until(ExpectedConditions.presenceOfElementLocated(NavigationBar.getNavigationBarElement()));
         return new NavigationBar(driver);
     }
 

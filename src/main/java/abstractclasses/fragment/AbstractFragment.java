@@ -6,7 +6,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public abstract class AbstractFragment {
 
-
     protected final WebDriver driver;
     private WebElement webElement;
 

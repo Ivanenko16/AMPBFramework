@@ -3,9 +3,9 @@ package desktop.pages;
 import abstractclasses.page.AbstractPage;
 import org.openqa.selenium.WebDriver;
 
-public class BookDepositoryHomePage extends AbstractPage {
+public class BookDepositoryHelpPage extends AbstractPage {
 
-    public BookDepositoryHomePage(WebDriver driver) {
+    public BookDepositoryHelpPage(WebDriver driver) {
         super(driver);
     }
 }

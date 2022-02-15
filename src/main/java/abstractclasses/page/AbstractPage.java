@@ -13,7 +13,6 @@ public abstract class AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-
     public void open(String url) {
         driver.get(url);
     }
