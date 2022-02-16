@@ -11,16 +11,17 @@ public class SingletonDriver {
     private static WebDriver driver;
 
     private SingletonDriver() {
-        if (driver == null) {
-            System.setProperty(CHROME_DRIVER_EXE_PROPERTY, WEB_DRIVER_FILE_PATH);
-        }
-    }
-
-    public static WebDriver getWebDriverInstance() {
-        new SingletonDriver();
+        System.setProperty(CHROME_DRIVER_EXE_PROPERTY, WEB_DRIVER_FILE_PATH);
         driver = new ChromeDriver();
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
+
+    }
+
+    public static WebDriver getWebDriverInstance() {
+        if (driver == null) {
+            new SingletonDriver();
+        }
         return driver;
     }
 }
