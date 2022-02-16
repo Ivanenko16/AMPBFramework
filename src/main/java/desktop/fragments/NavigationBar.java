@@ -37,34 +37,34 @@ public class NavigationBar extends AbstractFragment {
         return navigationBarElement;
     }
 
-    public void navigateToHomePage() {
+    public BookDepositoryHomePage navigateToHomePage() {
         homeIcon.click();
-        new BookDepositoryHomePage(driver);
+        return new BookDepositoryHomePage(driver);
     }
 
-    public void navigateToContactUsPage() {
+    public BookDepositoryContactUsPage navigateToContactUsPage() {
         contactUsIcon.click();
-        new BookDepositoryContactUsPage(driver);
+        return new BookDepositoryContactUsPage(driver);
     }
 
-    public void navigateToHelpPage() {
+    public BookDepositoryHelpPage navigateToHelpPage() {
         helpIcon.click();
-        new BookDepositoryHelpPage(driver);
+        return new BookDepositoryHelpPage(driver);
     }
 
-    public void navigateToOrderStatusPage() {
+    public BookDepositoryOrderStatusPage navigateToOrderStatusPage() {
         orderStatusIcon.click();
-        new BookDepositoryOrderStatusPage(driver);
+       return new BookDepositoryOrderStatusPage(driver);
     }
 
-    public void navigateToWishListPage() {
+    public BookDepositoryWishListPage navigateToWishListPage() {
         wishlistIcon.click();
-        new BookDepositoryWishListPage(driver);
+        return new BookDepositoryWishListPage(driver);
     }
 
-    public void navigateToSignInPage() {
+    public BookDepositorySignInPage navigateToSignInPage() {
         signInIcon.click();
-        new BookDepositorySignInPage(driver);
+        return new BookDepositorySignInPage(driver);
     }
 }
 

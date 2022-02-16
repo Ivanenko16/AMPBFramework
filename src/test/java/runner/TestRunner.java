@@ -12,96 +12,87 @@ import static constants.Constants.*;
 public class TestRunner {
 
     static WebDriver driver = SingletonDriver.getWebDriverInstance();
+    BookDepositoryLoginPage bookDepositoryLoginPage = new BookDepositoryLoginPage(driver);
 
     @Test
     public void clearEmailButtonIsAppeared() {
-
-        new BookDepositoryLoginPage(driver)
+        String style = bookDepositoryLoginPage
                 .openBookDepositoryLoginPage()
                 .switchToLogInFrame()
-                .setEmail("tractor@gmail.com");
+                .setEmail("tractor@gmail.com")
+                .getStyleClearEmailButton();
 
-        String style = BookDepositoryLoginPage.getStyleClearEmailButton();
-
-        Assert.assertEquals("display: block;", style);
+        Assert.assertEquals("No button", "display: block;", style);
     }
 
     @Test
     public void navigateToHomePage() {
-        new BookDepositoryLoginPage(driver)
+        String url = bookDepositoryLoginPage
                 .openBookDepositoryLoginPage()
                 .getNavigationBar()
-                .navigateToHomePage();
+                .navigateToHomePage()
+                .getCurrentUrl();
 
-        String url = driver.getCurrentUrl();
-
-        Assert.assertEquals(HOME_URL, url);
+        Assert.assertEquals("URL invalid or null",HOME_URL, url);
     }
 
     @Test
     public void navigateToHelpPage() {
-        new BookDepositoryLoginPage(driver)
+        String url = bookDepositoryLoginPage
                 .openBookDepositoryLoginPage()
                 .getNavigationBar()
-                .navigateToHelpPage();
+                .navigateToHelpPage()
+                .getCurrentUrl();
 
-        String url = driver.getCurrentUrl();
-
-        Assert.assertEquals(HELP_URL, url);
+        Assert.assertEquals("URL invalid or null",HELP_URL, url);
     }
 
     @Test
     public void navigateToContactUsPage() {
-        new BookDepositoryLoginPage(driver)
+        String url = bookDepositoryLoginPage
                 .openBookDepositoryLoginPage()
                 .getNavigationBar()
-                .navigateToContactUsPage();
-
-        String url = driver.getCurrentUrl();
+                .navigateToContactUsPage()
+                .getCurrentUrl();
 
         Assert.assertEquals(CONTACT_URL, url);
     }
 
     @Test
     public void navigateToOrderStatusPage() {
-        new BookDepositoryLoginPage(driver)
+        String url = bookDepositoryLoginPage
                 .openBookDepositoryLoginPage()
                 .getNavigationBar()
-                .navigateToOrderStatusPage();
+                .navigateToOrderStatusPage()
+                .getCurrentUrl();
 
-        String url = driver.getCurrentUrl();
-
-        Assert.assertEquals(TRACK_URL, url);
+        Assert.assertEquals("URL invalid or null",TRACK_URL, url);
     }
 
     @Test
     public void navigateToWishListPage() {
-        new BookDepositoryLoginPage(driver)
+        String url = bookDepositoryLoginPage
                 .openBookDepositoryLoginPage()
                 .getNavigationBar()
-                .navigateToWishListPage();
+                .navigateToWishListPage()
+                .getCurrentUrl();
 
-        String url = driver.getCurrentUrl();
-
-        Assert.assertEquals(WISH_URL, url);
+        Assert.assertEquals("URL invalid or null",WISH_URL, url);
     }
 
     @Test
     public void navigateToSignInPage() {
-        new BookDepositoryLoginPage(driver)
+        String url = bookDepositoryLoginPage
                 .openBookDepositoryLoginPage()
                 .getNavigationBar()
-                .navigateToSignInPage();
+                .navigateToSignInPage()
+                .getCurrentUrl();
 
-        String url = driver.getCurrentUrl();
-
-        Assert.assertEquals(LOGIN_URL, url);
+        Assert.assertEquals("URL invalid or null",LOGIN_URL, url);
     }
-
 
     @AfterAll
     static void browserTearDown() {
         driver.quit();
-        driver = null;
     }
 }

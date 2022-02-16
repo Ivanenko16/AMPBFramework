@@ -29,5 +29,9 @@ public abstract class AbstractPage {
         return element.getText();
     }
 
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
+
 }
 

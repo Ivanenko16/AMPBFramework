@@ -2,12 +2,13 @@ package desktop.pages;
 
 import abstractclasses.page.AbstractPage;
 import desktop.fragments.NavigationBar;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static constants.Constants.LOGIN_URL;
 
@@ -33,7 +34,7 @@ public class BookDepositoryLoginPage extends AbstractPage {
     private WebElement sigInFrame;
 
     public NavigationBar getNavigationBar() {
-        new WebDriverWait(driver,10)
+        new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.presenceOfElementLocated(NavigationBar.getNavigationBarElement()));
         return new NavigationBar(driver);
     }
@@ -57,7 +58,7 @@ public class BookDepositoryLoginPage extends AbstractPage {
         return this;
     }
 
-    public static String getStyleClearEmailButton() {
+    public String getStyleClearEmailButton() {
         return clearEmailButton.getAttribute("style");
     }
 }
