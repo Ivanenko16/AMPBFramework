@@ -15,7 +15,6 @@ public class SingletonDriver {
         driver = new ChromeDriver();
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
-
     }
 
     public static WebDriver getWebDriverInstance() {
