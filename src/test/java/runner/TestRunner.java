@@ -33,7 +33,7 @@ public class TestRunner {
                 .navigateToHomePage()
                 .getCurrentUrl();
 
-        Assert.assertEquals("URL invalid or null",HOME_URL, url);
+        Assert.assertEquals("URL invalid or null", HOME_URL, url);
     }
 
     @Test
@@ -44,7 +44,7 @@ public class TestRunner {
                 .navigateToHelpPage()
                 .getCurrentUrl();
 
-        Assert.assertEquals("URL invalid or null",HELP_URL, url);
+        Assert.assertEquals("URL invalid or null", HELP_URL, url);
     }
 
     @Test
@@ -55,7 +55,7 @@ public class TestRunner {
                 .navigateToContactUsPage()
                 .getCurrentUrl();
 
-        Assert.assertEquals(CONTACT_URL, url);
+        Assert.assertEquals("URL invalid or null", CONTACT_URL, url);
     }
 
     @Test
@@ -66,7 +66,7 @@ public class TestRunner {
                 .navigateToOrderStatusPage()
                 .getCurrentUrl();
 
-        Assert.assertEquals("URL invalid or null",TRACK_URL, url);
+        Assert.assertEquals("URL invalid or null", TRACK_URL, url);
     }
 
     @Test
@@ -77,7 +77,7 @@ public class TestRunner {
                 .navigateToWishListPage()
                 .getCurrentUrl();
 
-        Assert.assertEquals("URL invalid or null",WISH_URL, url);
+        Assert.assertEquals("URL invalid or null", WISH_URL, url);
     }
 
     @Test
@@ -88,7 +88,7 @@ public class TestRunner {
                 .navigateToSignInPage()
                 .getCurrentUrl();
 
-        Assert.assertEquals("URL invalid or null",LOGIN_URL, url);
+        Assert.assertEquals("URL invalid or null", LOGIN_URL, url);
     }
 
     @AfterAll
