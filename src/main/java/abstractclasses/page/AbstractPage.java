@@ -1,23 +1,37 @@
 package abstractclasses.page;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+
 public abstract class AbstractPage {
 
-    private String pageUrl;
-    private String pageUrlPattern;
+    protected final WebDriver driver;
 
-    public void setPageUrl(String pageUrl) {
-        this.pageUrl = pageUrl;
+    protected AbstractPage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
-    public String getPageUrl() {
-        return pageUrl;
+    public void open(String url) {
+        driver.get(url);
     }
 
-    public String setPageUrlPattern(String pageUrlPattern) {
-        return this.pageUrlPattern = pageUrlPattern;
+    public void click(WebElement element) {
+        element.click();
     }
 
-    public String getPageUrlPattern() {
-        return pageUrlPattern;
+    public void typeText(WebElement element, String text) {
+        element.sendKeys(text);
     }
+
+    public String getText(WebElement element) {
+        return element.getText();
+    }
+
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
+
 }
+
