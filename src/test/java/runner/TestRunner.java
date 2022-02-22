@@ -1,7 +1,7 @@
 package runner;
 
 import desktop.pages.BookDepositoryLoginPage;
-import driver.SingletonDriver;
+import driver.DriverManager;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.AfterAll;
@@ -11,7 +11,7 @@ import static constants.Constants.*;
 
 public class TestRunner {
 
-    static WebDriver driver = SingletonDriver.getWebDriverInstance();
+    static WebDriver driver = DriverManager.getDriver();
     BookDepositoryLoginPage bookDepositoryLoginPage = new BookDepositoryLoginPage(driver);
 
     @Test
