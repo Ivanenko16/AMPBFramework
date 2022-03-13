@@ -115,5 +115,27 @@ public class BookDepositoryLoginPage extends AbstractPage {
         }
         return style;
     }
+
+    public BookDepositoryLoginPage clickClearButton(String field) {
+        switch (field) {
+            case "Email":
+                click(clearEmailButton);
+                break;
+            case "BookDepositoryPassword":
+                click(clearBookDepositoryPasswordFieldButton);
+                break;
+            case "Name":
+               click(clearNameFieldButton);
+                break;
+            case "YourEmailAddress":
+                click(clearYourEmailAddressFieldButton);
+                break;
+            case "CreateAPassword":
+                click(clearCreateAPasswordFieldButton);
+                break;
+            default:
+        }
+        return this;
+    }
 }
 

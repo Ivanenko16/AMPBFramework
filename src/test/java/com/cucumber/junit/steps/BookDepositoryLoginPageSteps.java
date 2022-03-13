@@ -2,6 +2,7 @@ package com.cucumber.junit.steps;
 
 import desktop.pages.BookDepositoryLoginPage;
 import driver.DriverManager;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -29,9 +30,21 @@ public class BookDepositoryLoginPageSteps {
     }
 
     @Then("clear button is appeared on {string} field")
-    public void theUserFillsField(String field) {
+    public void checkVisibleClearButton(String field) {
         String style = bookDepositoryLoginPage.getStyleClearButton(field);
 
         Assert.assertEquals("No button", "display: block;", style);
+    }
+
+    @And("the user click on the clear button in the {string} field")
+    public void clickClearButton(String field) {
+        bookDepositoryLoginPage.clickClearButton(field);
+    }
+
+    @Then("the {string} field is empty")
+    public void checkFieldData(String field) {
+        String style = bookDepositoryLoginPage.getStyleClearButton(field);
+
+        Assert.assertEquals("No button", "display: none;", style);
     }
 }
