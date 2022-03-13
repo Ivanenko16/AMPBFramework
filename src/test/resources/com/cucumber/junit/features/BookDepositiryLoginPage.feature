@@ -1,7 +1,14 @@
-Feature: As a user I want to see clear button in text field
+Feature: As a user I want to see clear button in the text field after it is filled
 
   @smoke
-  Scenario: Clear button is appeared
+  Scenario Outline: The Clear button appears in the text field after it is filled
     Given the user opens BookDepositoryLogin page
-    When the user fills email field
-    Then clear button is appeared on email field
+    When the user fills "<field>" field
+    Then clear button is appeared on "<field>" field
+    Examples:
+      | field                  |
+      | Email                  |
+      | BookDepositoryPassword |
+      | Name                   |
+      | YourEmailAddress       |
+      | CreateAPassword        |

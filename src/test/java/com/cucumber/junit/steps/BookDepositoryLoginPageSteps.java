@@ -15,16 +15,22 @@ public class BookDepositoryLoginPageSteps {
         bookDepositoryLoginPage.openBookDepositoryLoginPage();
     }
 
-    @When("the user fills email field")
-    public void theUserFillsEmailField() {
-        bookDepositoryLoginPage
-                .switchToLogInFrame()
-                .setEmail("tractor@gmail.com");
+    @When("the user fills {string} field")
+    public void fillField(String field) {
+        if ("Email".equals(field) || "BookDepositoryPassword".equals(field)) {
+            bookDepositoryLoginPage
+                    .switchToLogInFrame()
+                    .fillField(field);
+        } else {
+            bookDepositoryLoginPage
+                    .switchToRegisterFrame()
+                    .fillField(field);
+        }
     }
 
-    @Then("clear button is appeared on email field")
-    public void clearButtonIsAppearedOnEmailField() {
-        String style = bookDepositoryLoginPage.getStyleClearEmailButton();
+    @Then("clear button is appeared on {string} field")
+    public void theUserFillsField(String field) {
+        String style = bookDepositoryLoginPage.getStyleClearButton(field);
 
         Assert.assertEquals("No button", "display: block;", style);
     }

@@ -19,8 +19,8 @@ public class TestRunner {
         String style = bookDepositoryLoginPage
                 .openBookDepositoryLoginPage()
                 .switchToLogInFrame()
-                .setEmail("tractor@gmail.com")
-                .getStyleClearEmailButton();
+                .fillField("Email")
+                .getStyleClearButton("Email");
 
         Assert.assertEquals("No button", "display: block;", style);
     }
