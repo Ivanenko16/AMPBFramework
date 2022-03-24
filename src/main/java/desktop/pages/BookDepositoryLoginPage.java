@@ -39,19 +39,19 @@ public class BookDepositoryLoginPage extends AbstractPage {
     @FindBy(id = "signInSubmit")
     private WebElement signInButton;
 
-    @FindBy(xpath = "//*[@placeholder='Email']/..//div[@id='ap_email_icon']")
+    @FindBy(xpath = "//*[@placeholder='Email']")
     private static WebElement clearEmailButton;
 
-    @FindBy(xpath = "//*[@placeholder='Book Depository password']/..//div[@id='ap_password_icon']")
+    @FindBy(xpath = "//*[@placeholder='Book Depository password']")
     private static WebElement clearBookDepositoryPasswordFieldButton;
 
     @FindBy(xpath = "//*[@id='ap_customer_name_icon']")
     private static WebElement clearNameFieldButton;
 
-    @FindBy(xpath = "//*[@placeholder='Your email address']/..//div[@id='ap_email_icon']")
+    @FindBy(xpath = "//*[@placeholder='Your email address']")
     private static WebElement clearYourEmailAddressFieldButton;
 
-    @FindBy(xpath = "//*[@placeholder='Create a password']/..//div[@id='ap_password_icon']")
+    @FindBy(xpath = "//*[@placeholder='Create a password']")
     private static WebElement clearCreateAPasswordFieldButton;
 
     @FindBy(xpath = "//*[@class='signin-iframe']")
