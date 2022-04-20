@@ -1,11 +1,7 @@
 package desktop.pages;
 
-import abstractclasses.page.AbstractPage;
-import org.openqa.selenium.WebDriver;
+import abstractclasses.fragment.AbstractFragment;
 
-public class BookDepositoryOrderStatusPage extends AbstractPage {
+public class BookDepositoryOrderStatusPage extends AbstractFragment {
 
-    public BookDepositoryOrderStatusPage(WebDriver driver) {
-        super(driver);
-    }
 }

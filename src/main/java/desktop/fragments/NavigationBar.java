@@ -2,19 +2,13 @@ package desktop.fragments;
 
 import abstractclasses.fragment.AbstractFragment;
 import desktop.pages.*;
-import driver.DriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import static java.lang.String.format;
 
 public class NavigationBar extends AbstractFragment {
-
-    public NavigationBar(WebDriver driver) {
-        super(driver);
-    }
 
     private static final By navigationBarElement = new By.ByXPath("//*[@class='user-nav']");
     private static final String TEXT_PATTERN = "//a[text()='%s']";
@@ -47,32 +41,32 @@ public class NavigationBar extends AbstractFragment {
 
     public BookDepositoryHomePage navigateToHomePage() {
         homeIcon.click();
-        return new BookDepositoryHomePage(DriverManager.getDriver());
+        return new BookDepositoryHomePage();
     }
 
     public BookDepositoryContactUsPage navigateToContactUsPage() {
         contactUsIcon.click();
-        return new BookDepositoryContactUsPage(DriverManager.getDriver());
+        return new BookDepositoryContactUsPage();
     }
 
     public BookDepositoryHelpPage navigateToHelpPage() {
         helpIcon.click();
-        return new BookDepositoryHelpPage(DriverManager.getDriver());
+        return new BookDepositoryHelpPage();
     }
 
     public BookDepositoryOrderStatusPage navigateToOrderStatusPage() {
         orderStatusIcon.click();
-        return new BookDepositoryOrderStatusPage(DriverManager.getDriver());
+        return new BookDepositoryOrderStatusPage();
     }
 
     public BookDepositoryWishListPage navigateToWishListPage() {
         wishlistIcon.click();
-        return new BookDepositoryWishListPage(DriverManager.getDriver());
+        return new BookDepositoryWishListPage();
     }
 
     public BookDepositorySignInPage navigateToSignInPage() {
         signInIcon.click();
-        return new BookDepositorySignInPage(DriverManager.getDriver());
+        return new BookDepositorySignInPage();
     }
 }
 

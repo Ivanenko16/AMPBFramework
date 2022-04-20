@@ -1,11 +1,6 @@
 package desktop.pages;
 
-import abstractclasses.page.AbstractPage;
-import org.openqa.selenium.WebDriver;
+import abstractclasses.fragment.AbstractFragment;
 
-public class BookDepositoryWishListPage extends AbstractPage {
-
-    public BookDepositoryWishListPage(WebDriver driver) {
-        super(driver);
-    }
+public class BookDepositoryWishListPage extends AbstractFragment {
 }

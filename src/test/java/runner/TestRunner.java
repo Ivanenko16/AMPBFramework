@@ -1,28 +1,23 @@
 package runner;
 
 import desktop.pages.BookDepositoryLoginPage;
-import driver.DriverManager;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterAll;
-import org.openqa.selenium.WebDriver;
 
 import static constants.Constants.*;
+import static driver.DriverManager.quitDriver;
 
 public class TestRunner {
 
-    static WebDriver driver = DriverManager.getDriver();
-    BookDepositoryLoginPage bookDepositoryLoginPage = new BookDepositoryLoginPage(driver);
+    BookDepositoryLoginPage bookDepositoryLoginPage = new BookDepositoryLoginPage();
 
     @Test
     public void clearEmailButtonIsAppeared() {
-        String style = bookDepositoryLoginPage
-                .openBookDepositoryLoginPage()
-                .switchToLogInFrame()
-                .fillField("Email")
-                .getStyleClearButton("Email");
-
-        Assert.assertEquals("No button", "display: block;", style);
+        bookDepositoryLoginPage.openBookDepositoryLoginPage()
+                .switchToLogInFrame();
+        bookDepositoryLoginPage.fillField("Email");
+        Assert.assertTrue(bookDepositoryLoginPage.clearButtonIsDisplayed("Email"));
     }
 
     @Test
@@ -91,8 +86,8 @@ public class TestRunner {
         Assert.assertEquals("URL invalid or null", LOGIN_URL, url);
     }
 
-    @AfterAll
-    static void browserTearDown() {
-        driver.quit();
+    @After
+    public void browserTearDown() {
+        quitDriver();
     }
 }

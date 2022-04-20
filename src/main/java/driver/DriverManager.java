@@ -14,7 +14,7 @@ public class DriverManager {
     private static  WebDriver driver;
     private static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
 
-    private DriverManager() {
+    private static void createDriverInstance(){
         System.setProperty(CHROME_DRIVER_EXE_PROPERTY, WEB_DRIVER_FILE_PATH);
         driver = new ChromeDriver();
         driver.manage().deleteAllCookies();
@@ -25,8 +25,8 @@ public class DriverManager {
     }
 
     public static WebDriver getDriver(){
-        if(driver == null){
-            new DriverManager();
+        if(driverThreadLocal.get() == null){
+           createDriverInstance();
         }
         return driverThreadLocal.get();
     }

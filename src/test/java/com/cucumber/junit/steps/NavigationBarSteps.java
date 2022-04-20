@@ -10,7 +10,7 @@ import static constants.Constants.HOME_URL;
 
 public class NavigationBarSteps {
 
-    BookDepositoryHomePage bookDepositoryHomePage = new BookDepositoryHomePage(DriverManager.getDriver());
+    BookDepositoryHomePage bookDepositoryHomePage = new BookDepositoryHomePage();
 
     @When("the user opens BookDepositoryHomePage page")
     public void openBookDepositoryHomePage() {

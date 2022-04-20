@@ -11,6 +11,7 @@ public final class Constants {
     public static final String CONTACT_URL = "https://www.bookdepository.com/contactus";
     public static final String TRACK_URL = "https://www.bookdepository.com/track";
     public static final String WISH_URL = "https://www.bookdepository.com/account/login";
+    public static final String BESTSELLERS_URL = "https://www.bookdepository.com/bestsellers";
     public static final int IMPLICIT_WAIT_TIMEOUT = 5;
     public static final int PAGE_LOAD_TIMEOUT = 20;
     public static final String IMAGE_PNG = "image/png";

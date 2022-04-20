@@ -1,25 +1,18 @@
 package desktop.pages;
 
-import abstractclasses.page.AbstractPage;
-import driver.DriverManager;
-import org.openqa.selenium.WebDriver;
+import abstractclasses.fragment.AbstractFragment;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import static constants.Constants.LOGIN_URL;
 
-public class BookDepositoryLoginPage extends AbstractPage {
+public class BookDepositoryLoginPage extends AbstractFragment {
 
-    private static final String CLEAR_BUTTON_STYLE = "style";
     private static final String EMAIL = "tractor@gmail.com";
     private static final String BOOK_DEPOSITORY_PASSWORD = "1@#Asdfrest";
     private static final String NAME = "Valera";
     private static final String YOUR_EMAIL_ADDRESS = "as/red@gmail.com";
     private static final String CREATE_PASSWORD = "Qwerty12345&";
-
-    public BookDepositoryLoginPage(WebDriver driver) {
-        super(driver);
-    }
 
     @FindBy(xpath = "//*[@placeholder='Email']")
     private WebElement emailField;
@@ -36,22 +29,19 @@ public class BookDepositoryLoginPage extends AbstractPage {
     @FindBy(xpath = "//*[@placeholder='Create a password']")
     private WebElement createAPasswordField;
 
-    @FindBy(id = "signInSubmit")
-    private WebElement signInButton;
-
-    @FindBy(xpath = "//*[@placeholder='Email']")
+    @FindBy(xpath = "//*[@id='ap_email_icon']")
     private static WebElement clearEmailButton;
 
-    @FindBy(xpath = "//*[@placeholder='Book Depository password']")
+    @FindBy(xpath = "//*[@id='ap_password_icon']")
     private static WebElement clearBookDepositoryPasswordFieldButton;
 
     @FindBy(xpath = "//*[@id='ap_customer_name_icon']")
     private static WebElement clearNameFieldButton;
 
-    @FindBy(xpath = "//*[@placeholder='Your email address']")
+    @FindBy(xpath = "//*[@id='ap_email_icon']")
     private static WebElement clearYourEmailAddressFieldButton;
 
-    @FindBy(xpath = "//*[@placeholder='Create a password']")
+    @FindBy(xpath = "//*[@id='ap_password_icon']")
     private static WebElement clearCreateAPasswordFieldButton;
 
     @FindBy(xpath = "//*[@class='signin-iframe']")
@@ -62,80 +52,66 @@ public class BookDepositoryLoginPage extends AbstractPage {
 
     public BookDepositoryLoginPage openBookDepositoryLoginPage() {
         open(LOGIN_URL);
-        return new BookDepositoryLoginPage(DriverManager.getDriver());
+        return new BookDepositoryLoginPage();
     }
 
     public BookDepositoryLoginPage switchToLogInFrame() {
-        return new BookDepositoryLoginPage(DriverManager.getDriver().switchTo().frame(sigInFrame));
+        switchToIframe(sigInFrame);
+        return new BookDepositoryLoginPage();
     }
 
     public BookDepositoryLoginPage switchToRegisterFrame() {
-        return new BookDepositoryLoginPage(DriverManager.getDriver().switchTo().frame(registerFrame));
+        switchToIframe(registerFrame);
+        return new BookDepositoryLoginPage();
     }
 
-    public BookDepositoryLoginPage fillField(String field) {
-        switch (field) {
-            case "Email":
-                emailField.click();
-                typeText(emailField,EMAIL);
-                break;
-            case "BookDepositoryPassword":
-                bookDepositoryPasswordField.click();
-                typeText(bookDepositoryPasswordField, BOOK_DEPOSITORY_PASSWORD);
-                break;
-            case "Name":
-                nameField.click();
-                typeText(nameField,NAME);
-                break;
-            case "YourEmailAddress":
-                yourEmailAddressField.click();
-                typeText(yourEmailAddressField,YOUR_EMAIL_ADDRESS);
-                break;
-            case "CreateAPassword":
-                createAPasswordField.click();
-                typeText(createAPasswordField,CREATE_PASSWORD);
-               break;
-            default:
-        }
-        return this;
-    }
-
-    public String getStyleClearButton(String field) {
-        String style = null;
+    public void fillField(String field) {
         if ("Email".equals(field)) {
-            style = clearEmailButton.getAttribute(CLEAR_BUTTON_STYLE);
+            emailField.click();
+            typeText(emailField, EMAIL);
         } else if ("BookDepositoryPassword".equals(field)) {
-            style =  clearBookDepositoryPasswordFieldButton.getAttribute(CLEAR_BUTTON_STYLE);
+            bookDepositoryPasswordField.click();
+            typeText(bookDepositoryPasswordField, BOOK_DEPOSITORY_PASSWORD);
         } else if ("Name".equals(field)) {
-            style = clearNameFieldButton.getAttribute(CLEAR_BUTTON_STYLE);
+            nameField.click();
+            typeText(nameField, NAME);
         } else if ("YourEmailAddress".equals(field)) {
-            style = clearYourEmailAddressFieldButton.getAttribute(CLEAR_BUTTON_STYLE);
+            yourEmailAddressField.click();
+            typeText(yourEmailAddressField, YOUR_EMAIL_ADDRESS);
         } else if ("CreateAPassword".equals(field)) {
-            style = clearCreateAPasswordFieldButton.getAttribute(CLEAR_BUTTON_STYLE);
+            createAPasswordField.click();
+            typeText(createAPasswordField, CREATE_PASSWORD);
         }
-        return style;
     }
 
-    public BookDepositoryLoginPage clickClearButton(String field) {
-        switch (field) {
-            case "Email":
-                click(clearEmailButton);
-                break;
-            case "BookDepositoryPassword":
-                click(clearBookDepositoryPasswordFieldButton);
-                break;
-            case "Name":
-               click(clearNameFieldButton);
-                break;
-            case "YourEmailAddress":
-                click(clearYourEmailAddressFieldButton);
-                break;
-            case "CreateAPassword":
-                click(clearCreateAPasswordFieldButton);
-                break;
-            default:
+    public Boolean clearButtonIsDisplayed(String field) {
+        boolean isDisplayed = false;
+        if ("Email".equals(field)) {
+            isDisplayed = isDisplayed(clearEmailButton);
+        } else if ("BookDepositoryPassword".equals(field)) {
+            isDisplayed = isDisplayed(clearBookDepositoryPasswordFieldButton);
+        } else if ("Name".equals(field)) {
+            isDisplayed = isDisplayed(clearNameFieldButton);
+        } else if ("YourEmailAddress".equals(field)) {
+            isDisplayed = isDisplayed(clearYourEmailAddressFieldButton);
+        } else if ("CreateAPassword".equals(field)) {
+            isDisplayed = isDisplayed(clearCreateAPasswordFieldButton);
         }
-        return this;
+        return isDisplayed;
+    }
+
+    public void clickClearButton(String field) {
+        if ("Email".equals(field)) {
+           click(clearEmailButton);
+        } else if ("BookDepositoryPassword".equals(field)) {
+            click(clearBookDepositoryPasswordFieldButton);
+        } else if ("Name".equals(field)) {
+            click(clearNameFieldButton);
+        } else if ("YourEmailAddress".equals(field)) {
+            click(clearYourEmailAddressFieldButton);
+        } else if ("CreateAPassword".equals(field)) {
+            click(clearCreateAPasswordFieldButton);
+        }
     }
 }
 
