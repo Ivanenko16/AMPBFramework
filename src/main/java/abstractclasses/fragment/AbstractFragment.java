@@ -54,7 +54,7 @@ public abstract class AbstractFragment {
         return webElement.isDisplayed();
     }
 
-    public void switchToIframe(WebElement webElement){
+    public void switchToIframe(WebElement webElement) {
         getDriver().switchTo().frame(webElement);
     }
 

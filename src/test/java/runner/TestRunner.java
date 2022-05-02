@@ -1,6 +1,6 @@
 package runner;
 
-import desktop.pages.BookDepositoryLoginPage;
+import desktop.pages.LoginPage;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
@@ -10,19 +10,19 @@ import static driver.DriverManager.quitDriver;
 
 public class TestRunner {
 
-    BookDepositoryLoginPage bookDepositoryLoginPage = new BookDepositoryLoginPage();
+    LoginPage loginPage = new LoginPage();
 
     @Test
     public void clearEmailButtonIsAppeared() {
-        bookDepositoryLoginPage.openBookDepositoryLoginPage()
+        loginPage.openBookDepositoryLoginPage()
                 .switchToLogInFrame();
-        bookDepositoryLoginPage.fillField("Email");
-        Assert.assertTrue(bookDepositoryLoginPage.clearButtonIsDisplayed("Email"));
+        loginPage.fillField("Email");
+        Assert.assertTrue(loginPage.clearButtonIsDisplayed("Email"));
     }
 
     @Test
     public void navigateToHomePage() {
-        String url = bookDepositoryLoginPage
+        String url = loginPage
                 .openBookDepositoryLoginPage()
                 .getNavigationBar()
                 .navigateToHomePage()
@@ -33,7 +33,7 @@ public class TestRunner {
 
     @Test
     public void navigateToHelpPage() {
-        String url = bookDepositoryLoginPage
+        String url = loginPage
                 .openBookDepositoryLoginPage()
                 .getNavigationBar()
                 .navigateToHelpPage()
@@ -44,7 +44,7 @@ public class TestRunner {
 
     @Test
     public void navigateToContactUsPage() {
-        String url = bookDepositoryLoginPage
+        String url = loginPage
                 .openBookDepositoryLoginPage()
                 .getNavigationBar()
                 .navigateToContactUsPage()
@@ -55,7 +55,7 @@ public class TestRunner {
 
     @Test
     public void navigateToOrderStatusPage() {
-        String url = bookDepositoryLoginPage
+        String url = loginPage
                 .openBookDepositoryLoginPage()
                 .getNavigationBar()
                 .navigateToOrderStatusPage()
@@ -66,7 +66,7 @@ public class TestRunner {
 
     @Test
     public void navigateToWishListPage() {
-        String url = bookDepositoryLoginPage
+        String url = loginPage
                 .openBookDepositoryLoginPage()
                 .getNavigationBar()
                 .navigateToWishListPage()
@@ -77,7 +77,7 @@ public class TestRunner {
 
     @Test
     public void navigateToSignInPage() {
-        String url = bookDepositoryLoginPage
+        String url = loginPage
                 .openBookDepositoryLoginPage()
                 .getNavigationBar()
                 .navigateToSignInPage()

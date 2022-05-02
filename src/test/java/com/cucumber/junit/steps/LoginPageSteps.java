@@ -1,28 +1,28 @@
 package com.cucumber.junit.steps;
 
-import desktop.pages.BookDepositoryLoginPage;
+import desktop.pages.LoginPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
-public class BookDepositoryLoginPageSteps {
+public class LoginPageSteps {
 
-    BookDepositoryLoginPage bookDepositoryLoginPage = new BookDepositoryLoginPage();
+    LoginPage loginPage = new LoginPage();
 
     @When("the user opens BookDepositoryLogin page")
     public void openBookDepositoryLoginPage() {
-        bookDepositoryLoginPage.openBookDepositoryLoginPage();
+        loginPage.openBookDepositoryLoginPage();
     }
 
     @When("the user fills {string} field")
     public void fillField(String field) {
         if ("Email".equals(field) || "BookDepositoryPassword".equals(field)) {
-            bookDepositoryLoginPage
+            loginPage
                     .switchToLogInFrame()
                     .fillField(field);
         } else {
-            bookDepositoryLoginPage
+            loginPage
                     .switchToRegisterFrame()
                     .fillField(field);
         }
@@ -30,16 +30,16 @@ public class BookDepositoryLoginPageSteps {
 
     @Then("clear button is appeared on {string} field")
     public void checkVisibleClearButton(String field) {
-        Assert.assertTrue(bookDepositoryLoginPage.clearButtonIsDisplayed(field));
+        Assert.assertTrue(loginPage.clearButtonIsDisplayed(field));
     }
 
     @And("the user click on the clear button in the {string} field")
     public void clickClearButton(String field) {
-        bookDepositoryLoginPage.clickClearButton(field);
+        loginPage.clickClearButton(field);
     }
 
     @Then("the {string} field is empty")
     public void checkFieldData(String field) {
-        Assert.assertFalse(String.format("The %s field isn't empty", field), bookDepositoryLoginPage.clearButtonIsDisplayed(field));
+        Assert.assertFalse(String.format("The %s field isn't empty", field), loginPage.clearButtonIsDisplayed(field));
     }
 }

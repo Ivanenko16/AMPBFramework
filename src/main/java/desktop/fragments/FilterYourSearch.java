@@ -1,7 +1,7 @@
 package desktop.fragments;
 
 import abstractclasses.fragment.AbstractFragment;
-import desktop.pages.BookDepositoryBestsellersPage;
+import desktop.pages.BestsellersPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -30,7 +30,7 @@ public class FilterYourSearch extends AbstractFragment {
         } else if (PRICE_RANGE_OVER_30.equals(price)) {
             priceRangeField.get(3).click();
         }
-        new BookDepositoryBestsellersPage();
+        new BestsellersPage();
     }
 
     public void refineResults() {

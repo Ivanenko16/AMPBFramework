@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 import static constants.Constants.LOGIN_URL;
 
-public class BookDepositoryLoginPage extends AbstractFragment {
+public class LoginPage extends AbstractFragment {
 
     private static final String EMAIL = "tractor@gmail.com";
     private static final String BOOK_DEPOSITORY_PASSWORD = "1@#Asdfrest";
@@ -50,19 +50,19 @@ public class BookDepositoryLoginPage extends AbstractFragment {
     @FindBy(xpath = "//*[@class='register-iframe']")
     private WebElement registerFrame;
 
-    public BookDepositoryLoginPage openBookDepositoryLoginPage() {
+    public LoginPage openBookDepositoryLoginPage() {
         open(LOGIN_URL);
-        return new BookDepositoryLoginPage();
+        return new LoginPage();
     }
 
-    public BookDepositoryLoginPage switchToLogInFrame() {
+    public LoginPage switchToLogInFrame() {
         switchToIframe(sigInFrame);
-        return new BookDepositoryLoginPage();
+        return new LoginPage();
     }
 
-    public BookDepositoryLoginPage switchToRegisterFrame() {
+    public LoginPage switchToRegisterFrame() {
         switchToIframe(registerFrame);
-        return new BookDepositoryLoginPage();
+        return new LoginPage();
     }
 
     public void fillField(String field) {

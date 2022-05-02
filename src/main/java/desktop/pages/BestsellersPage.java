@@ -7,9 +7,9 @@ import org.openqa.selenium.support.FindBy;
 import java.util.*;
 import java.util.stream.Stream;
 
-public class BookDepositoryBestsellersPage extends AbstractFragment {
+import static constants.Constants.ONLY_NUMBER;
 
-    String ONLY_NUMBER = "[^0-9.]";
+public class BestsellersPage extends AbstractFragment {
 
     @FindBy(xpath = "//*[@class='price']")
     private List<WebElement> bookPrices;

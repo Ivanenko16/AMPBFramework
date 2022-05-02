@@ -2,7 +2,8 @@ package constants;
 
 public final class Constants {
 
-    private Constants() {}
+    private Constants() {
+    }
 
     public static final String WEB_DRIVER_FILE_PATH = "src/main/resources/chromedriver.exe";
     public static final String LOGIN_URL = "https://www.bookdepository.com/account/login/to/account";
@@ -15,5 +16,5 @@ public final class Constants {
     public static final int IMPLICIT_WAIT_TIMEOUT = 5;
     public static final int PAGE_LOAD_TIMEOUT = 20;
     public static final String IMAGE_PNG = "image/png";
-
+    public static final String ONLY_NUMBER = "[^0-9.]";
 }

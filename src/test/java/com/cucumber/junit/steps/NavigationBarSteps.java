@@ -1,6 +1,6 @@
 package com.cucumber.junit.steps;
 
-import desktop.pages.BookDepositoryHomePage;
+import desktop.pages.HomePage;
 import driver.DriverManager;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,16 +10,16 @@ import static constants.Constants.HOME_URL;
 
 public class NavigationBarSteps {
 
-    BookDepositoryHomePage bookDepositoryHomePage = new BookDepositoryHomePage();
+    HomePage homePage = new HomePage();
 
     @When("the user opens BookDepositoryHomePage page")
     public void openBookDepositoryHomePage() {
-        bookDepositoryHomePage.open(HOME_URL);
+        homePage.open(HOME_URL);
     }
 
     @When("the user click on the {string} icon")
     public void clickOnIcon(String icon) {
-        bookDepositoryHomePage.getNavigationBar().getIcon(icon).click();
+        homePage.getNavigationBar().getIcon(icon).click();
     }
 
     @Then("the page with {string} url is displayed")
