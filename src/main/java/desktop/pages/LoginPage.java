@@ -50,6 +50,9 @@ public class LoginPage extends AbstractFragment {
     @FindBy(xpath = "//*[@class='register-iframe']")
     private WebElement registerFrame;
 
+    @FindBy(id = "continue")
+    private WebElement createYourAccountButton;
+
     public LoginPage openBookDepositoryLoginPage() {
         open(LOGIN_URL);
         return new LoginPage();
@@ -84,6 +87,19 @@ public class LoginPage extends AbstractFragment {
         }
     }
 
+    public void fillJoinField(String field, String data) {
+        if ("Name".equals(field)) {
+            nameField.click();
+            typeText(nameField, data);
+        } else if ("YourEmailAddress".equals(field)) {
+            yourEmailAddressField.click();
+            typeText(yourEmailAddressField, data);
+        } else if ("CreateAPassword".equals(field)) {
+            createAPasswordField.click();
+            typeText(createAPasswordField, data);
+        }
+    }
+
     public Boolean clearButtonIsDisplayed(String field) {
         boolean isDisplayed = false;
         if ("Email".equals(field)) {
@@ -102,7 +118,7 @@ public class LoginPage extends AbstractFragment {
 
     public void clickClearButton(String field) {
         if ("Email".equals(field)) {
-           click(clearEmailButton);
+            click(clearEmailButton);
         } else if ("BookDepositoryPassword".equals(field)) {
             click(clearBookDepositoryPasswordFieldButton);
         } else if ("Name".equals(field)) {
@@ -112,6 +128,10 @@ public class LoginPage extends AbstractFragment {
         } else if ("CreateAPassword".equals(field)) {
             click(clearCreateAPasswordFieldButton);
         }
+    }
+
+    public void registerNewAccount() {
+        click(createYourAccountButton);
     }
 }
 

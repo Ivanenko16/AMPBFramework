@@ -7,7 +7,6 @@ import io.cucumber.java.en.When;
 
 public class SearchResultPageSteps extends BaseStep {
 
-
     public SearchResultPageSteps(TestContext testContext) {
         super(testContext);
     }

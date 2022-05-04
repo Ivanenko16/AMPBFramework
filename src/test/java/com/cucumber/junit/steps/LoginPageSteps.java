@@ -1,12 +1,21 @@
 package com.cucumber.junit.steps;
 
+import com.cucumber.junit.TestContext;
 import desktop.pages.LoginPage;
+import enums.Context;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
-public class LoginPageSteps {
+import java.util.List;
+
+public class LoginPageSteps extends BaseStep {
+
+    public LoginPageSteps(TestContext testContext) {
+        super(testContext);
+    }
 
     LoginPage loginPage = new LoginPage();
 
@@ -41,5 +50,22 @@ public class LoginPageSteps {
     @Then("the {string} field is empty")
     public void checkFieldData(String field) {
         Assert.assertFalse(String.format("The %s field isn't empty", field), loginPage.clearButtonIsDisplayed(field));
+    }
+
+    @When("the user fills join fields")
+    public void fillsJoinFields(DataTable dataTable) {
+        List<List<String>> userList = dataTable.asLists(String.class);
+        loginPage.switchToRegisterFrame();
+        for (List<String> user : userList) {
+            loginPage.fillJoinField("Name", user.get(0));
+            loginPage.fillJoinField("YourEmailAddress", user.get(1));
+            loginPage.fillJoinField("CreateAPassword", user.get(2));
+            getScenarioContext().setContext(Context.USER_NAME, user.get(0));
+        }
+    }
+
+    @When("the user click on the CreateYourAccount button")
+    public void registerNewAccount() {
+        loginPage.registerNewAccount();
     }
 }
