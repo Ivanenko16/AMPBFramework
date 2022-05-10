@@ -3,17 +3,15 @@ package desktop.fragments;
 import abstractclasses.fragment.AbstractFragment;
 import desktop.pages.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import static java.lang.String.format;
+
 public class NavigationBar extends AbstractFragment {
 
-    public NavigationBar(WebDriver driver) {
-        super(driver);
-    }
-
     private static final By navigationBarElement = new By.ByXPath("//*[@class='user-nav']");
+    private static final String TEXT_PATTERN = "//a[text()='%s']";
 
     @FindBy(xpath = "//*[@class='icon-home']")
     private WebElement homeIcon;
@@ -37,34 +35,38 @@ public class NavigationBar extends AbstractFragment {
         return navigationBarElement;
     }
 
-    public BookDepositoryHomePage navigateToHomePage() {
+    public WebElement getIcon(String linkText) {
+        return findElement(By.xpath(format(TEXT_PATTERN, linkText)));
+    }
+
+    public HomePage navigateToHomePage() {
         homeIcon.click();
-        return new BookDepositoryHomePage(driver);
+        return new HomePage();
     }
 
-    public BookDepositoryContactUsPage navigateToContactUsPage() {
+    public ContactUsPage navigateToContactUsPage() {
         contactUsIcon.click();
-        return new BookDepositoryContactUsPage(driver);
+        return new ContactUsPage();
     }
 
-    public BookDepositoryHelpPage navigateToHelpPage() {
+    public HelpPage navigateToHelpPage() {
         helpIcon.click();
-        return new BookDepositoryHelpPage(driver);
+        return new HelpPage();
     }
 
-    public BookDepositoryOrderStatusPage navigateToOrderStatusPage() {
+    public OrderStatusPage navigateToOrderStatusPage() {
         orderStatusIcon.click();
-       return new BookDepositoryOrderStatusPage(driver);
+        return new OrderStatusPage();
     }
 
-    public BookDepositoryWishListPage navigateToWishListPage() {
+    public WishListPage navigateToWishListPage() {
         wishlistIcon.click();
-        return new BookDepositoryWishListPage(driver);
+        return new WishListPage();
     }
 
-    public BookDepositorySignInPage navigateToSignInPage() {
+    public SignInPage navigateToSignInPage() {
         signInIcon.click();
-        return new BookDepositorySignInPage(driver);
+        return new SignInPage();
     }
 }
 

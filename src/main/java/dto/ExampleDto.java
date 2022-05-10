@@ -6,5 +6,4 @@ public class ExampleDto {
     public String title;
     public String firstName;
     public String lastName;
-//  ...
 }

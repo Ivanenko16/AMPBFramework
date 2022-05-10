@@ -1,33 +1,28 @@
 package runner;
 
-import desktop.pages.BookDepositoryLoginPage;
-import driver.SingletonDriver;
+import desktop.pages.LoginPage;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterAll;
-import org.openqa.selenium.WebDriver;
 
 import static constants.Constants.*;
+import static driver.DriverManager.quitDriver;
 
 public class TestRunner {
 
-    static WebDriver driver = SingletonDriver.getWebDriverInstance();
-    BookDepositoryLoginPage bookDepositoryLoginPage = new BookDepositoryLoginPage(driver);
+    LoginPage loginPage = new LoginPage();
 
     @Test
     public void clearEmailButtonIsAppeared() {
-        String style = bookDepositoryLoginPage
-                .openBookDepositoryLoginPage()
-                .switchToLogInFrame()
-                .setEmail("tractor@gmail.com")
-                .getStyleClearEmailButton();
-
-        Assert.assertEquals("No button", "display: block;", style);
+        loginPage.openBookDepositoryLoginPage()
+                .switchToLogInFrame();
+        loginPage.fillField("Email");
+        Assert.assertTrue(loginPage.clearButtonIsDisplayed("Email"));
     }
 
     @Test
     public void navigateToHomePage() {
-        String url = bookDepositoryLoginPage
+        String url = loginPage
                 .openBookDepositoryLoginPage()
                 .getNavigationBar()
                 .navigateToHomePage()
@@ -38,7 +33,7 @@ public class TestRunner {
 
     @Test
     public void navigateToHelpPage() {
-        String url = bookDepositoryLoginPage
+        String url = loginPage
                 .openBookDepositoryLoginPage()
                 .getNavigationBar()
                 .navigateToHelpPage()
@@ -49,7 +44,7 @@ public class TestRunner {
 
     @Test
     public void navigateToContactUsPage() {
-        String url = bookDepositoryLoginPage
+        String url = loginPage
                 .openBookDepositoryLoginPage()
                 .getNavigationBar()
                 .navigateToContactUsPage()
@@ -60,7 +55,7 @@ public class TestRunner {
 
     @Test
     public void navigateToOrderStatusPage() {
-        String url = bookDepositoryLoginPage
+        String url = loginPage
                 .openBookDepositoryLoginPage()
                 .getNavigationBar()
                 .navigateToOrderStatusPage()
@@ -71,7 +66,7 @@ public class TestRunner {
 
     @Test
     public void navigateToWishListPage() {
-        String url = bookDepositoryLoginPage
+        String url = loginPage
                 .openBookDepositoryLoginPage()
                 .getNavigationBar()
                 .navigateToWishListPage()
@@ -82,7 +77,7 @@ public class TestRunner {
 
     @Test
     public void navigateToSignInPage() {
-        String url = bookDepositoryLoginPage
+        String url = loginPage
                 .openBookDepositoryLoginPage()
                 .getNavigationBar()
                 .navigateToSignInPage()
@@ -91,8 +86,8 @@ public class TestRunner {
         Assert.assertEquals("URL invalid or null", LOGIN_URL, url);
     }
 
-    @AfterAll
-    static void browserTearDown() {
-        driver.quit();
+    @After
+    public void browserTearDown() {
+        quitDriver();
     }
 }
