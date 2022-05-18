@@ -17,4 +17,7 @@ public final class Constants {
     public static final int PAGE_LOAD_TIMEOUT = 20;
     public static final String IMAGE_PNG = "image/png";
     public static final String ONLY_NUMBER = "[^0-9.]";
+    public static final String EMAIL_PATTERN = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+    public static final String IPV4_PATTERN = "^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\\.(?!$)|$)){4}$";
+    public static final String VISA_CARD_NUMBER_PATTERN = "^4[0-9]{12}(?:[0-9]{3})?$";
 }
