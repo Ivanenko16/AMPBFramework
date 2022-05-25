@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.*;
 import java.util.stream.Stream;
 
-import static constants.Constants.ONLY_NUMBER;
+import static constants.RegexExpression.ONLY_NUMBER;
 
 public class BestsellersPage extends AbstractFragment {
 
