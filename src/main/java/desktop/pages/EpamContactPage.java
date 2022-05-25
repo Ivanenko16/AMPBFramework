@@ -5,11 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static constants.Constants.EPAM_CONTACT_PAGE;
 import static constants.RegexExpression.*;
+import static utils.RegexUtil.getStringByPattern;
 
 public class EpamContactPage extends AbstractFragment {
 
@@ -24,38 +23,28 @@ public class EpamContactPage extends AbstractFragment {
         return address.getText();
     }
 
-    private static String patternMatcher(String pattern, String matcher) {
-        Pattern p = Pattern.compile(pattern);
-        Matcher m = p.matcher(matcher);
-        if (m.find()) {
-            return m.group();
-        } else {
-            return null;
-        }
-    }
-
     public String getBuildNumber() {
-        return patternMatcher(BUILD_NUMBER, getAddressText());
+        return getStringByPattern(BUILD_NUMBER, getAddressText());
     }
 
     public String getStreetName() {
-        return patternMatcher(STREET_NAME, getAddressText());
+        return getStringByPattern(STREET_NAME, getAddressText());
     }
 
     public String getOfficeNumber() {
-        return patternMatcher(OFFICE_NUMBER, getAddressText());
+        return getStringByPattern(OFFICE_NUMBER, getAddressText());
     }
 
     public String getTownName() {
-        return Objects.requireNonNull(patternMatcher(TOWN_NAME, getAddressText())).trim();
+        return Objects.requireNonNull(getStringByPattern(TOWN_NAME, getAddressText())).trim();
     }
 
     public String getPostIndex() {
-        return patternMatcher(POST_INDEX, getAddressText());
+        return getStringByPattern(POST_INDEX, getAddressText());
     }
 
     public String getCountryName() {
-        return patternMatcher(COUNTRY_NAME, getAddressText());
+        return getStringByPattern(COUNTRY_NAME, getAddressText());
     }
 
     @Override

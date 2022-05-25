@@ -6,11 +6,14 @@ import java.util.regex.Pattern;
 import static constants.RegexExpression.*;
 
 public class RegexUtil {
-
-    private static boolean patternMatcher(String pattern, String matcher) {
+    public static String getStringByPattern(String pattern, String matcher) {
         Pattern p = Pattern.compile(pattern);
         Matcher m = p.matcher(matcher);
-        return m.matches();
+        if (m.find()) {
+            return m.group();
+        } else {
+            return null;
+        }
     }
 
     public static boolean isValidEmail(String email) {
@@ -23,5 +26,11 @@ public class RegexUtil {
 
     public static boolean isValidVisaCardNumber(String cardNumber) {
         return patternMatcher(VISA_CARD_NUMBER_PATTERN, cardNumber);
+    }
+
+    private static boolean patternMatcher(String pattern, String matcher) {
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(matcher);
+        return m.matches();
     }
 }

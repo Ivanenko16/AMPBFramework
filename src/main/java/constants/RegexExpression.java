@@ -1,6 +1,9 @@
 package constants;
 
-public class RegexExpression {
+public final class RegexExpression {
+
+    public RegexExpression() {
+    }
 
     public static final String ONLY_NUMBER = "[^0-9.]";
     public static final String EMAIL_PATTERN = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
