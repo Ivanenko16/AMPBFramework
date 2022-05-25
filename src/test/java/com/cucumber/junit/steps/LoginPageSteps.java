@@ -19,12 +19,12 @@ public class LoginPageSteps extends BaseStep {
 
     LoginPage loginPage = new LoginPage();
 
-    @When("the user opens BookDepositoryLogin page")
+    @When("^the user opens BookDepositoryLogin page as guest|admin$")
     public void openBookDepositoryLoginPage() {
         loginPage.openBookDepositoryLoginPage();
     }
 
-    @When("the user fills {string} field")
+    @When("^the user fills (\\D+) field$")
     public void fillField(String field) {
         if ("Email".equals(field) || "BookDepositoryPassword".equals(field)) {
             loginPage
@@ -37,17 +37,17 @@ public class LoginPageSteps extends BaseStep {
         }
     }
 
-    @Then("clear button is appeared on {string} field")
+    @Then("^clear button is appeared on (\\D+) field$")
     public void checkVisibleClearButton(String field) {
         Assert.assertTrue(loginPage.clearButtonIsDisplayed(field));
     }
 
-    @And("the user click on the clear button in the {string} field")
+    @And("^the user click on the clear button in the (\\D+) field$")
     public void clickClearButton(String field) {
         loginPage.clickClearButton(field);
     }
 
-    @Then("the {string} field is empty")
+    @Then("^the (\\D+) field is empty$")
     public void checkFieldData(String field) {
         Assert.assertFalse(String.format("The %s field isn't empty", field), loginPage.clearButtonIsDisplayed(field));
     }
@@ -68,4 +68,5 @@ public class LoginPageSteps extends BaseStep {
     public void registerNewAccount() {
         loginPage.registerNewAccount();
     }
+
 }

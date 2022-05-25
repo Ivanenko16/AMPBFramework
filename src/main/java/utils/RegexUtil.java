@@ -3,28 +3,25 @@ package utils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static constants.Constants.*;
+import static constants.RegexExpression.*;
 
 public class RegexUtil {
 
-    public static boolean isValidEmail(String email) {
+    private static boolean patternMatcher(String pattern, String matcher) {
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(matcher);
+        return m.matches();
+    }
 
-        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-        Matcher matcher = pattern.matcher(email);
-        return matcher.matches();
+    public static boolean isValidEmail(String email) {
+        return patternMatcher(EMAIL_PATTERN, email);
     }
 
     public static boolean isValidIp4Address(String ip4) {
-
-        Pattern pattern = Pattern.compile(IPV4_PATTERN);
-        Matcher matcher = pattern.matcher(ip4);
-        return matcher.matches();
+        return patternMatcher(IPV4_PATTERN, ip4);
     }
 
     public static boolean isValidVisaCardNumber(String cardNumber) {
-
-        Pattern pattern = Pattern.compile(VISA_CARD_NUMBER_PATTERN);
-        Matcher matcher = pattern.matcher(cardNumber);
-        return matcher.matches();
+        return patternMatcher(VISA_CARD_NUMBER_PATTERN, cardNumber);
     }
 }
