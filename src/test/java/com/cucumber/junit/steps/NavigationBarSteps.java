@@ -5,6 +5,7 @@ import driver.DriverManager;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 
 import static constants.Constants.HOME_URL;
 
@@ -22,9 +23,10 @@ public class NavigationBarSteps {
         homePage.getNavigationBar().getIcon(icon).click();
     }
 
-    @Then("the page with {string} url is displayed")
+    @Then("I am redirected to a {string}")
     public void verifyPageUrl(String pageUrl) {
-        String actualPageUrl = DriverManager.getDriver().getCurrentUrl();
+        JavascriptExecutor js = (JavascriptExecutor)DriverManager.getDriver();
+        String actualPageUrl = js.executeScript("return document.URL;").toString();
         switch (pageUrl) {
             case "Help":
                 String helpUrl = HOME_URL + pageUrl.toLowerCase();
@@ -45,6 +47,12 @@ public class NavigationBarSteps {
             case "Sign in/Join":
                 String signUrl = HOME_URL + "account/login/to/account";
                 Assert.assertEquals("URL invalid or null", actualPageUrl, signUrl);
+                break;
+            case "Search page":
+                Assert.assertTrue("URL invalid or null", actualPageUrl.contains("search"));
+                break;
+            case "Basket page":
+                Assert.assertTrue("URL invalid or null", actualPageUrl.contains("basket"));
                 break;
         }
     }

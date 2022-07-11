@@ -3,9 +3,12 @@ package com.cucumber.junit.steps;
 import com.cucumber.junit.TestContext;
 import desktop.pages.HomePage;
 import enums.Context;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.assertj.core.api.SoftAssertions;
+import utils.UrlFactory;
 
 public class HomePageSteps extends BaseStep {
 
@@ -33,5 +36,20 @@ public class HomePageSteps extends BaseStep {
                 .isEqualTo(String.format("Hello %s", getScenarioContext().getContext(Context.USER_NAME)));
         softAssertions.assertThat(homePage.successAlertIsDisplayed()).as("The success alert message is not displayed")
                 .isTrue();
+    }
+
+    @Given("I am an anonymous customer with clear cookies")
+    public void clearCookies() {
+        homePage.deleteAllCookies();
+    }
+
+    @And("I open the {string}")
+    public void openPage(String page) {
+        homePage.open(UrlFactory.getUrl(page));
+    }
+
+    @And("I search for {string}")
+    public void searchBook(String bookName) {
+        homePage.searchForTerms(bookName);
     }
 }
