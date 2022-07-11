@@ -1,6 +1,7 @@
 package abstractclasses.fragment;
 
 import desktop.fragments.NavigationBar;
+import driver.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -62,5 +63,13 @@ public abstract class AbstractFragment {
         new WebDriverWait(getDriver(), Duration.ofSeconds(10))
                 .until(ExpectedConditions.presenceOfElementLocated(NavigationBar.getNavigationBarElement()));
         return new NavigationBar();
+    }
+
+    public WebElement switchToAlert() {
+        return (WebElement) getDriver().switchTo().alert();
+    }
+
+    public void deleteAllCookies (){
+        DriverManager.getDriver().manage().deleteAllCookies();
     }
 }
