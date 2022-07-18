@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
                 "json:target/cucumber/report.json",
                 "junit:target/cucumber/report.xml"},
         monochrome = true,
-        tags = "@smoke",
+        tags = "@run_test",
         glue = "com.cucumber.junit",
         features = "src/test/resources/com/cucumber/junit/features")
 
