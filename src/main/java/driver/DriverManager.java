@@ -25,16 +25,18 @@ public class DriverManager {
     }
 
     private static void createDriverInstance() {
-        String browser = System.getProperty("browser");
+        String browser = System.getProperty("browser").toLowerCase();
         switch (browser) {
-            case ("Chrome"):
+            case "chrome":
                 System.setProperty(CHROME_DRIVER_EXE_PROPERTY, CHROME_WEB_DRIVER_FILE_PATH);
                 driver = new ChromeDriver();
                 setDriverSetup();
-            case "Firefox":
+                break;
+            case "firefox":
                 System.setProperty(GECKO_DRIVER_EXE_PROPERTY, GECKO_WEB_DRIVER_FILE_PATH);
                 driver = new FirefoxDriver();
                 setDriverSetup();
+                break;
             default:
                 throw new IllegalStateException("This driver is not supported");
         }
