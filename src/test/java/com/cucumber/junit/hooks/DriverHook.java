@@ -6,9 +6,9 @@ import static driver.DriverManager.getDriver;
 
 public class DriverHook {
 
-    @Before
-    public static void setupDriver() {
-        getDriver();
-    }
+//    @Before
+//    public static void setupDriver() {
+//        getDriver();
+//    }
 
 }
