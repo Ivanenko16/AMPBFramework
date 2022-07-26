@@ -48,6 +48,11 @@ public class HomePageSteps extends BaseStep {
         homePage.open(UrlFactory.getUrl(page));
     }
 
+    @Given("the user opens {string}")
+    public void openThePage(String page) {
+        homePage.open(UrlFactory.getUrl(page));
+    }
+
     @And("I search for {string}")
     public void searchBook(String bookName) {
         homePage.searchForTerms(bookName);

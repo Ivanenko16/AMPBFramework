@@ -1,6 +1,5 @@
 Feature: As a user I want to use the icons in the navigation bar to navigate to the relevant pages
 
-  @smoke
   Scenario Outline: Navigation to the relevant page
     Given the user opens BookDepositoryHomePage page
     When the user click on the "<icon>" icon
