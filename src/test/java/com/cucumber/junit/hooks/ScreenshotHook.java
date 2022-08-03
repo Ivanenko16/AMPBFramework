@@ -1,14 +1,5 @@
 package com.cucumber.junit.hooks;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Scenario;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-
-import static constants.Constants.IMAGE_PNG;
-import static driver.DriverManager.getDriver;
-import static driver.DriverManager.quitDriver;
-
 public class ScreenshotHook {
 
 //    @After

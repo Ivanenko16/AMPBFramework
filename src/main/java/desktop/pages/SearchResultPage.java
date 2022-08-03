@@ -12,7 +12,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static driver.DriverManager.getDriver;
+import static configuration.driver.DriverManager.getDriver;
 
 public class SearchResultPage extends AbstractFragment {
 

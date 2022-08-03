@@ -2,7 +2,7 @@ package utils;
 
 import abstractclasses.fragment.AbstractFragment;
 import desktop.pages.EpamContactPage;
-import driver.DriverManager;
+import configuration.driver.DriverManager;
 
 public class RegexRun extends AbstractFragment {
 

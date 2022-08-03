@@ -2,7 +2,7 @@ package com.cucumber.junit.steps;
 
 import desktop.fragments.FilterYourSearch;
 import desktop.pages.BestsellersPage;
-import driver.DriverManager;
+import configuration.driver.DriverManager;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

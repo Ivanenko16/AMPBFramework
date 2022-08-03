@@ -6,7 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import static constants.Constants.*;
-import static driver.DriverManager.quitDriver;
+import static configuration.driver.DriverManager.quitDriver;
 
 public class TestRunner {
 

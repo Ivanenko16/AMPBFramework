@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static driver.DriverManager.getDriver;
+import static configuration.driver.DriverManager.getDriver;
 
 public class BasketPage extends AbstractFragment {
 
