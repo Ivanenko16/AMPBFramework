@@ -1,7 +1,7 @@
 package desktop.fragments;
 
 import abstractclasses.fragment.AbstractFragment;
-import driver.DriverManager;
+import configuration.driver.DriverManager;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;

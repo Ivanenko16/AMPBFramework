@@ -1,7 +1,7 @@
 package com.cucumber.junit.steps;
 
 import desktop.pages.HomePage;
-import driver.DriverManager;
+import configuration.driver.DriverManager;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
