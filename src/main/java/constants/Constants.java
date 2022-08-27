@@ -18,5 +18,6 @@ public final class Constants {
     public static final int IMPLICIT_WAIT_TIMEOUT = 5;
     public static final int PAGE_LOAD_TIMEOUT = 20;
     public static final String IMAGE_PNG = "image/png";
+    public static final String KRUIDVAT_URL = "https://www.kruidvat.nl/";
 
 }
