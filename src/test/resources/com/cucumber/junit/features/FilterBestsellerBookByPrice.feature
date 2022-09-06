@@ -1,6 +1,5 @@
 Feature: As a user I want filter bestseller book by price
 
-  @smoke
   Scenario Outline: The bestsellers are corresponding filtered after selecting price
     Given the user opens BookDepositoryBestsellers page
     When the user select "<price>" price

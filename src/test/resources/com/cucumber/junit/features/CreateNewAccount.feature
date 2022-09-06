@@ -1,4 +1,4 @@
-
+@smoke
 Feature: Create new account
 
   Scenario: Create new account

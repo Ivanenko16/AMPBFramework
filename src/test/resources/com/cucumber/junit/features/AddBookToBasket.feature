@@ -1,4 +1,3 @@
-
 Feature: As a user I want to see the book with the correct prices on the payment page
 
   Scenario Outline: The book appears on the payment page with the correct prices

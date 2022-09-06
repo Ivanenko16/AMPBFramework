@@ -7,11 +7,15 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 
 import java.util.List;
 
 public class LoginPageSteps extends BaseStep {
+
+    private static final Logger logger = LogManager.getLogger(LoginPageSteps.class);
 
     public LoginPageSteps(TestContext testContext) {
         super(testContext);
@@ -54,6 +58,8 @@ public class LoginPageSteps extends BaseStep {
 
     @When("the user fills join fields")
     public void fillsJoinFields(DataTable dataTable) {
+        logger.warn("Mandatory fields can be changed");
+
         List<List<String>> userList = dataTable.asLists(String.class);
         loginPage.switchToRegisterFrame();
         for (List<String> user : userList) {

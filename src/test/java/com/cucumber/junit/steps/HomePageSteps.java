@@ -7,10 +7,14 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.assertj.core.api.SoftAssertions;
 import utils.UrlFactory;
 
 public class HomePageSteps extends BaseStep {
+
+    private static final Logger logger = LogManager.getLogger(HomePageSteps.class);
 
     public HomePageSteps(TestContext testContext) {
         super(testContext);
@@ -26,10 +30,13 @@ public class HomePageSteps extends BaseStep {
     @When("the user navigate to the LoginPage page")
     public void navigateToTheLoginPagePage() {
         homePage.navigateToThePage("Sign in/Join");
+        logger.info("Login page is opened");
     }
 
     @Then("the Homepage is opened with corresponding welcome message")
     public void checkWelcomeMessage() {
+        logger.debug("This is a debug message");
+
         SoftAssertions softAssertions = new SoftAssertions();
 
         softAssertions.assertThat(homePage.getWelcomeMessage()).as("Welcome message is incorrect or in-displayed")

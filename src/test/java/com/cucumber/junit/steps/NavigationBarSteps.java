@@ -1,9 +1,12 @@
 package com.cucumber.junit.steps;
 
+import com.cucumber.junit.hooks.DriverHook;
 import desktop.pages.HomePage;
 import configuration.driver.DriverManager;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 
@@ -11,11 +14,14 @@ import static constants.Constants.HOME_URL;
 
 public class NavigationBarSteps {
 
+    private static final Logger logger = LogManager.getLogger(NavigationBarSteps.class);
+
     HomePage homePage = new HomePage();
 
     @When("the user opens BookDepositoryHomePage page")
     public void openBookDepositoryHomePage() {
         homePage.open(HOME_URL);
+        logger.info("Home page is opened");
     }
 
     @When("the user click on the {string} icon")
