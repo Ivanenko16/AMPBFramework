@@ -4,7 +4,6 @@ import desktop.fragments.NavigationBar;
 import configuration.driver.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -64,6 +63,10 @@ public abstract class AbstractFragment {
         new WebDriverWait(getDriver(), Duration.ofSeconds(10))
                 .until(ExpectedConditions.presenceOfElementLocated(NavigationBar.getNavigationBarElement()));
         return new NavigationBar();
+    }
+
+    public void refreshPage(){
+        getDriver().navigate().refresh();
     }
 
     public WebElement switchToAlert() {

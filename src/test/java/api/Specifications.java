@@ -20,6 +20,15 @@ public class Specifications {
                 .build();
     }
 
+    public static RequestSpecification requestSpecification(String url, String pathParam, Object object) {
+        return new RequestSpecBuilder()
+                .setContentType(ContentType.JSON)
+                .setBaseUri(url)
+                .addFilter(new RequestLoggingFilter())
+                .addFilter(new ResponseLoggingFilter())
+                .build().pathParam(pathParam, object);
+    }
+
     public static ResponseSpecification responseSpecification(int expectedStatusCode) {
         return new ResponseSpecBuilder()
                 .expectStatusCode(expectedStatusCode)
