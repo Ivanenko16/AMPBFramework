@@ -39,7 +39,7 @@ public class KruidvatMainPageSteps {
     SessionStorage sessionStorage = new SessionStorage();
     KruidvatMainPage kruidvatMainPage = new KruidvatMainPage();
 
-    @Given("the user opens the 'Kruidvat' page$")
+    @Then("the user opens the 'Kruidvat' page$")
     public void openMainPage() {
         kruidvatMainPage.openMainPage();
     }
@@ -51,7 +51,10 @@ public class KruidvatMainPageSteps {
 
     @When("the user adds the required cookies")
     public void addRequiredCookies() {
-        getDriver().manage().addCookie(new Cookie("guid",productCode));
+        getDriver().manage().addCookie(new Cookie("guid", (String) sessionStorage.getSessionStorage().get("guid")));
+        System.out.println("############################");
+        System.out.println((String) sessionStorage.getSessionStorage().get("guid"));
+        System.out.println("############################");
     }
 
     @When("the user refreshes the page")
@@ -71,7 +74,7 @@ public class KruidvatMainPageSteps {
         sessionStorage.createSessionStorage(jsonString);
     }
 
-    @When("^the user adds product for guid path param to cart via API$")
+    @When("the user adds product for guid path param to cart via API")
     public void addProductForPathParamToCartViaAPI() {
         Specifications.installSpecification(Specifications.requestSpecification(KRUIDVAT_URL, "guid", sessionStorage.getSessionStorage()
                 .get("guid")), Specifications.responseSpecification(200));

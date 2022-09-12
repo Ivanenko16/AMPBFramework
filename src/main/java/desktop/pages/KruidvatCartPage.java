@@ -11,10 +11,17 @@ public class KruidvatCartPage extends AbstractFragment {
     @FindBy(className = "d-flex")
     WebElement productImage;
 
+    @FindBy(xpath = "//*[contains(@href, '/p/2876350')] ")
+    WebElement productHref;
+
     public void moveCursorToProduct() {
         Actions action = new Actions(DriverManager.getDriver());
         action.moveToElement(productImage);
         action.perform();
+    }
+
+    public String getProductHref(){
+       return getText(productHref);
     }
 
 }

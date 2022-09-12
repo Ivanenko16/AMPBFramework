@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
                 "com.epam.reportportal.cucumber.StepReporter"
         },
         monochrome = true,
-        tags = "@api1",
+        tags = "@api",
         glue = "com.cucumber.junit",
         features = "src/test/resources/com/cucumber/junit/features")
 
