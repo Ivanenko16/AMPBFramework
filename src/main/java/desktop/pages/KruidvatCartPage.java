@@ -6,22 +6,25 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import java.time.Duration;
+
 public class KruidvatCartPage extends AbstractFragment {
 
-    @FindBy(className = "d-flex")
+    @FindBy(className = "product-summary__wrapper")
     WebElement productImage;
 
-    @FindBy(xpath = "//*[contains(@href, '/p/2876350')] ")
+    @FindBy(xpath = "//*[contains(@href, '/p/2876350')]")
     WebElement productHref;
 
     public void moveCursorToProduct() {
-        Actions action = new Actions(DriverManager.getDriver());
-        action.moveToElement(productImage);
-        action.perform();
+        new Actions(DriverManager.getDriver())
+                .moveToElement(productImage)
+                .pause(Duration.ofSeconds(1))
+                .perform();
     }
 
-    public String getProductHref(){
-       return getText(productHref);
+    public Boolean isProductAdded() {
+        return productHref.isEnabled();
     }
 
 }

@@ -9,6 +9,8 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+
 public class Specifications {
 
     public static RequestSpecification requestSpecification(String url) {
@@ -32,6 +34,7 @@ public class Specifications {
     public static ResponseSpecification responseSpecification(int expectedStatusCode) {
         return new ResponseSpecBuilder()
                 .expectStatusCode(expectedStatusCode)
+                .expectHeader("Content-Type", equalTo("application/json;charset=UTF-8") )
                 .build();
     }
 

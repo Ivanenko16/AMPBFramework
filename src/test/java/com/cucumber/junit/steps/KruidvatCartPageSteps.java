@@ -11,7 +11,7 @@ public class KruidvatCartPageSteps {
     @Then("the user verifies that Cart contains expected product")
     public void verifiesThatCartContainsExpectedProduct() {
         kruidvatCartPage.moveCursorToProduct();
-        Assert.assertTrue("Cart doesn't contain expected product", kruidvatCartPage.getProductHref().contains("2876350"));
+        Assert.assertTrue("Cart doesn't contain expected product", kruidvatCartPage.isProductAdded());
     }
 
 }

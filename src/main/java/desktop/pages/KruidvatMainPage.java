@@ -19,7 +19,7 @@ public class KruidvatMainPage extends AbstractFragment {
     @FindBy(id = "onetrust-accept-btn-handler")
     WebElement acceptCookiesButton;
 
-    public void navigateToTheCart() {
+    public void navigateToCart() {
         click(acceptCookiesButton);
         new WebDriverWait(getDriver(), Duration.ofSeconds(20)).until(ExpectedConditions.elementToBeClickable(cart));
         click(cart);

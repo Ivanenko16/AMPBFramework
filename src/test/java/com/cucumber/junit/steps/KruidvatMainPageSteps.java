@@ -46,15 +46,12 @@ public class KruidvatMainPageSteps {
 
     @When("the user clears all cookies")
     public void deleteAllCookies() {
-       kruidvatMainPage.deleteAllCookies();
+        kruidvatMainPage.deleteAllCookies();
     }
 
-    @When("the user adds the required cookies")
-    public void addRequiredCookies() {
-        getDriver().manage().addCookie(new Cookie("guid", (String) sessionStorage.getSessionStorage().get("guid")));
-        System.out.println("############################");
-        System.out.println((String) sessionStorage.getSessionStorage().get("guid"));
-        System.out.println("############################");
+    @When("the user adds the {string} cookies")
+    public void addRequiredCookies(String cookie) {
+        getDriver().manage().addCookie(new Cookie(cookie, (String) sessionStorage.getSessionStorage().get("guid")));
     }
 
     @When("the user refreshes the page")
@@ -64,7 +61,7 @@ public class KruidvatMainPageSteps {
 
     @When("the user navigates to the Cart page")
     public void navigateToTheCartPage() {
-        kruidvatMainPage.navigateToTheCart();
+        kruidvatMainPage.navigateToCart();
     }
 
     @Given("the user create cart via API")
@@ -74,20 +71,20 @@ public class KruidvatMainPageSteps {
         sessionStorage.createSessionStorage(jsonString);
     }
 
-    @When("the user adds product for guid path param to cart via API")
-    public void addProductForPathParamToCartViaAPI() {
-        Specifications.installSpecification(Specifications.requestSpecification(KRUIDVAT_URL, "guid", sessionStorage.getSessionStorage()
-                .get("guid")), Specifications.responseSpecification(200));
+    @When("the user adds product for {string} path param to cart via API")
+    public void addProductForPathParamToCartViaAPI(String pathParam) {
+        Specifications.installSpecification(Specifications.requestSpecification(KRUIDVAT_URL, pathParam, sessionStorage.getSessionStorage()
+                .get(pathParam)), Specifications.responseSpecification(200));
         stepData.response = given().body(order)
                 .when()
                 .post(USER_ENTRIES.path);
     }
 
-    @Then("the user verifies that cart response has expected schema")
-    public void verificationSchema() {
+    @Then("the user verifies that cart response has expected schema: {string}")
+    public void verificationSchema(String pathname) {
         stepData.response
                 .then()
-                .body(JsonSchemaValidator.matchesJsonSchema(new File("src/test/resources/json-schema/schema.json")));
+                .body(JsonSchemaValidator.matchesJsonSchema(new File(pathname)));
     }
 
     @Then("the user verifies that cart response has expected quantity")
